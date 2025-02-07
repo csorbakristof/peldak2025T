@@ -1,0 +1,50 @@
+- Create Turkmite class, ctor takes image, Step() method (image as dependency injection)
+
+- Color constants
+
+(commit)
+
+- Direction with modulo: (d + 4) % 4
+- Direction with dxy from array, X += ..., X and Y limiter with Min, Max
+- extract Step() method
+- extract: private (Vec3b newColor, int turn) GetStep(Vec3b currentColor)
+
+        public void Step()
+        {
+            Vec3b currentColor = Indexer[Y, X];
+            
+            (Vec3b newColor, int turn) = GetStep(currentColor);
+            Indexer[Y, X] = newColor;
+            direction += turn;
+
+            direction = (direction+4) % 4;
+
+            (int, int)[] dxy = [(0, -1), (1, 0), (0, 1), (-1, 0)];
+            (var dx, var dy) = dxy[direction];
+            X += dx;
+            Y += dy;
+            X = Math.Min(Math.Max(X, 0), 199);
+            Y = Math.Min(Math.Max(Y, 0), 199);
+        }
+
+        private (Vec3b newColor, int turn) GetStep(Vec3b currentColor)
+        {
+            return currentColor == black ? (white, 1) : (black, -1);
+        }
+
+(commit)
+
+- Create base class for turkmites, original turkmite into BasicTurkmite
+- Create unit test for BasicTurkmite using a BasicTurkmiteMock
+
+(commit)
+
+- Create a new turkmite with a different color
+
+            return currentColor == black ? (red, 1) : ( currentColor==red ? (yellow, -1) : (black, -1));
+
+- Add PreferredStepCount
+
+        public abstract int PreferredStepCount { get; }
+
+(commit)
