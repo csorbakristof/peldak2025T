@@ -12,23 +12,24 @@ namespace Turkmite
             int x = 100;
             int y = 100;
             int direction = 0;  // 0 up, 1 right, 2 down, 3 left
+            Vec3b white = new Vec3b(255, 255, 255);
+            Vec3b black = new Vec3b(0, 0, 0);
+
             for (int i = 0; i < 13000; i++)
             {
                 Vec3b currentColor = indexer[y, x];
-                if (currentColor == new Vec3b(0, 0, 0))
+                if (currentColor == black)
                 {
-                    indexer[y, x] = new Vec3b(255, 255, 255);
+                    indexer[y, x] = white;
                     direction++;
-                    if (direction > 3)
-                        direction = 0;
                 }
                 else
                 {
-                    indexer[y, x] = new Vec3b(0, 0, 0);
+                    indexer[y, x] = black;
                     direction--;
-                    if (direction < 0)
-                        direction = 3;
                 }
+                direction = (direction + 4) % 4;
+
                 switch (direction)
                 {
                     case 0:
@@ -44,6 +45,7 @@ namespace Turkmite
                         x--;
                         break;
                 }
+
                 if (x < 0)
                     x = 199;
                 if (x > 199)
@@ -53,6 +55,7 @@ namespace Turkmite
                 if (y > 199)
                     y = 0;
             }
+
             Cv2.ImShow("TurkMite", img);
             Cv2.WaitKey();
 
