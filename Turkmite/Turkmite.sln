@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Turkmite", "Turkmite\Turkmite.csproj", "{111E11F3-483B-47F5-8890-E1EA201BA85B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TurkmiteTests", "TurkmiteTests\TurkmiteTests.csproj", "{B8584625-3E8B-4A1C-A706-BBC22A1AFBCC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{111E11F3-483B-47F5-8890-E1EA201BA85B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{111E11F3-483B-47F5-8890-E1EA201BA85B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{111E11F3-483B-47F5-8890-E1EA201BA85B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B8584625-3E8B-4A1C-A706-BBC22A1AFBCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B8584625-3E8B-4A1C-A706-BBC22A1AFBCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B8584625-3E8B-4A1C-A706-BBC22A1AFBCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B8584625-3E8B-4A1C-A706-BBC22A1AFBCC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

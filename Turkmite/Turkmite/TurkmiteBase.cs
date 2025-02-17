@@ -1,13 +1,8 @@
 ﻿using OpenCvSharp;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Turkmite
 {
-    internal abstract class TurkmiteBase
+    public abstract class TurkmiteBase
     {
         protected int x = 100;
         protected int y = 100;
