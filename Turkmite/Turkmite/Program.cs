@@ -8,9 +8,9 @@ namespace Turkmite
         {
             Mat img = new Mat(200, 200, MatType.CV_8UC3, new Scalar(0, 0, 0));
             var indexer = img.GetGenericIndexer<Vec3b>();
-            var turkmite = new SimpleTurkmite();
+            var turkmite = new ThreeColorTurkmite();
 
-            for (int i = 0; i < 13000; i++)
+            for (int i = 0; i < turkmite.GetOptimalStepCount(); i++)
             {
                 turkmite.Step(indexer);
             }

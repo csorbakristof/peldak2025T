@@ -10,6 +10,8 @@ namespace Turkmite
 
         readonly (int, int)[] deltaXY = [(0, -1), (1, 0), (0, 1), (-1, 0)];
 
+        public abstract int GetOptimalStepCount();
+
         public void Step(Mat.Indexer<Vec3b> indexer)
         {
             (var newColor, int deltaDirection) = GetNextStep(indexer[y, x]);
