@@ -4,10 +4,10 @@ namespace Turkmite
 {
     public class SimpleTurkmite : TurkmiteBase
     {
-        private readonly Vec3b white = new Vec3b(255, 255, 255);
-        private readonly Vec3b black = new Vec3b(0, 0, 0);
+        public static readonly Vec3b PrimaryColor = new Vec3b(0, 0, 255);
+        public static readonly Vec3b SecondaryColor = new Vec3b(0, 0, 0);
 
         public override (Vec3b newColor, int deltaDirection) GetNextStep(Vec3b currentColor) 
-            => currentColor == black ? (white, 1) : (black, -1);
+            => currentColor == SecondaryColor ? (PrimaryColor, 1) : (SecondaryColor, -1);
     }
 }
