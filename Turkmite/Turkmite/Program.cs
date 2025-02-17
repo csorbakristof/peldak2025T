@@ -1,5 +1,4 @@
 ﻿using OpenCvSharp;
-using System;
 
 namespace Turkmite
 {
@@ -9,7 +8,7 @@ namespace Turkmite
         {
             Mat img = new Mat(200, 200, MatType.CV_8UC3, new Scalar(0, 0, 0));
             var indexer = img.GetGenericIndexer<Vec3b>();
-            var turkmite = new TurkmiteBase();
+            var turkmite = new SimpleTurkmite();
 
             for (int i = 0; i < 13000; i++)
             {
