@@ -22,6 +22,6 @@ namespace Turkmite
             y = Math.Min(Math.Max(y, 0), 199);
         }
 
-        public abstract (Vec3b newColor, int deltaDirection) GetNextStep(Vec3b currentColor);
+        protected abstract (Vec3b newColor, int deltaDirection) GetNextStep(Vec3b currentColor);
     }
 }
