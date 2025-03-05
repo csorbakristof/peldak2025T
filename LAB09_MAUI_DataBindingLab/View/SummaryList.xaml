@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LAB09_MAUI_DataBindingLab.View.SummaryList"
+             xmlns:local="clr-namespace:LAB09_MAUI_DataBindingLab.View"
+             xmlns:vm="clr-namespace:LAB09_MAUI_DataBindingLab.ViewModel">
+
+    <ContentView.Resources>
+        <vm:IsExpense2ColorConverter x:Key="IsExpenseConverter"/>
+    </ContentView.Resources>
+
+    <StackLayout MinimumWidthRequest="300" BackgroundColor="WhiteSmoke">
+        <Label Text="List of transactions:" TextColor="Black"/>
+        <CollectionView ItemsSource="{x:Binding List}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="vm:SummaryListItemViewModel">
+                    <HorizontalStackLayout WidthRequest="300" HeightRequest="30"
+                                Padding="3" Spacing="3">
+                        <Label Text="{x:Binding Summary}" VerticalTextAlignment="Center"
+                                   TextColor="{x:Binding IsExpense, Converter={StaticResource IsExpenseConverter}}" />
+                        <Image Source="View/luxury.png" VerticalOptions="Center" IsVisible="{x:Binding IsLuxury}"/>
+                    </HorizontalStackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </StackLayout>
+</ContentView>
