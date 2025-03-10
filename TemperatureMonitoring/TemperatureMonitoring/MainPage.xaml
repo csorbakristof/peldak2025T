@@ -6,7 +6,7 @@
 
     <VerticalStackLayout Padding="30,0" Spacing="25">
         <Button Text="Load CSV" Clicked="LoadCsv_Clicked" HorizontalOptions="Fill" />
-        <CollectionView ItemsSource="{x:Binding TempHumList}" BackgroundColor="AliceBlue">
+        <CollectionView ItemsSource="{x:Binding TempHumList}" BackgroundColor="AliceBlue" VerticalScrollBarVisibility="Always" HeightRequest="200">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:TempHum">
                     <Label Text="{x:Binding Temperature}" />
