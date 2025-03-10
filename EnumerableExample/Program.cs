@@ -7,8 +7,12 @@
             Console.WriteLine("Values:");
             // LINQ
             // Lamda expression: v => v > 2
-            foreach (var v in GetValues())
-                Console.WriteLine(v);
+            var values = GetValues();
+            var enumerator = values.GetEnumerator();
+            while (enumerator.MoveNext())
+            {
+                Console.WriteLine(enumerator.Current);
+            }
         }
 
         public static IEnumerable<int> GetValues()
