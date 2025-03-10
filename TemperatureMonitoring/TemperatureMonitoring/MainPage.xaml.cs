@@ -1,24 +1,28 @@
-﻿namespace TemperatureMonitoring
+﻿using System.Collections.ObjectModel;
+using TemperatureMonitoring.Model;
+
+namespace TemperatureMonitoring
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        public ObservableCollection<TempHum> TempHumList { get; set; }
+            = new ObservableCollection<TempHum>();
 
         public MainPage()
         {
             InitializeComponent();
+            this.BindingContext = this;
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private void LoadCsv_Clicked(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            var loader = new DataLoader();
+            TempHumList.Clear();
+            var appDirectory = System.AppContext.BaseDirectory;
+            foreach (var item in loader.LoadCsv(Path.Combine(appDirectory,@"Data/data.csv")))
+            {
+                TempHumList.Add(item);
+            }
         }
     }
 

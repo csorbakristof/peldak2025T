@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Globalization;
 
 namespace TemperatureMonitoring.Model
 {
@@ -20,8 +16,8 @@ namespace TemperatureMonitoring.Model
                 {
                     DeviceName = deviceName,
                     TimeStamp = timestamp,
-                    Temperature = double.Parse(fields[1]),
-                    Humidity = double.Parse(fields[2]),
+                    Temperature = double.Parse(fields[1], CultureInfo.InvariantCulture),
+                    Humidity = double.Parse(fields[2], CultureInfo.InvariantCulture),
                     Time = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(timestamp)
                 };
             }
