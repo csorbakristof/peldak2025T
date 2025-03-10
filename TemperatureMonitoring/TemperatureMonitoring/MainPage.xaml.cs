@@ -19,7 +19,7 @@ namespace TemperatureMonitoring
             var loader = new DataLoader();
             TempHumList.Clear();
             var appDirectory = System.AppContext.BaseDirectory;
-            foreach (var item in loader.LoadCsv(Path.Combine(appDirectory,@"Data/data.csv")))
+            foreach (var item in loader.LoadCsv(Path.Combine(appDirectory,@"Data/data.csv")).Take(200))
             {
                 TempHumList.Add(item);
             }

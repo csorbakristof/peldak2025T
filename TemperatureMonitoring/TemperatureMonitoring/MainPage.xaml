@@ -1,15 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:model="clr-namespace:TemperatureMonitoring.Model"
              x:Class="TemperatureMonitoring.MainPage">
 
-    <VerticalStackLayout
-        Padding="30,0"
-        Spacing="25">
-        <Button
-            Text="Load CSV" 
-            SemanticProperties.Hint="Load csv file"
-            Clicked="LoadCsv_Clicked"
-            HorizontalOptions="Fill" />
+    <VerticalStackLayout Padding="30,0" Spacing="25">
+        <Button Text="Load CSV" Clicked="LoadCsv_Clicked" HorizontalOptions="Fill" />
+        <CollectionView ItemsSource="{x:Binding TempHumList}" BackgroundColor="AliceBlue">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:TempHum">
+                    <Label Text="{x:Binding Temperature}" />
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </VerticalStackLayout>
 </ContentPage>
