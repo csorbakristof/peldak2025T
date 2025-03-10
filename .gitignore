@@ -1,3 +1,4 @@
 /Turkmite/.vs/*
 obj/
 bin/
+*/.vs/*
