@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using TemperatureMonitoring.Model;
 
-namespace TemperatureMonitoring
+namespace TemperatureMonitoring.View
 {
     public partial class MainPage : ContentPage
     {
