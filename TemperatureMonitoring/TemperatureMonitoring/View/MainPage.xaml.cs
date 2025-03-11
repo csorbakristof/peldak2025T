@@ -1,27 +1,28 @@
 ﻿using System.Collections.ObjectModel;
 using TemperatureMonitoring.Model;
+using TemperatureMonitoring.ViewModel;
 
 namespace TemperatureMonitoring.View
 {
     public partial class MainPage : ContentPage
     {
-        public ObservableCollection<TempHum> TempHumList { get; set; }
-            = new ObservableCollection<TempHum>();
+        private TempHumViewModel viewModel;
 
-        public MainPage()
+        public MainPage(TempHumViewModel vm)
         {
             InitializeComponent();
-            this.BindingContext = this;
+            this.viewModel = vm;
+            this.BindingContext = vm;
         }
 
         private void LoadCsv_Clicked(object sender, EventArgs e)
         {
             var loader = new DataLoader();
-            TempHumList.Clear();
+            viewModel.TempHumList.Clear();
             var appDirectory = System.AppContext.BaseDirectory;
             foreach (var item in loader.LoadCsv(Path.Combine(appDirectory,@"Data/data.csv")).Take(200))
             {
-                TempHumList.Add(item);
+                viewModel.TempHumList.Add(item);
             }
         }
     }

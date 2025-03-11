@@ -7,7 +7,7 @@
     Shell.FlyoutBehavior="Locked"
     Title="Temperature Monitoring">
 
-    <FlyoutItem Title="Home" Icon="home.png">
+    <!--<FlyoutItem Title="Home" Icon="home.png">
         <ShellContent
         Title="Home"
         ContentTemplate="{DataTemplate local:MainPage}"
@@ -18,5 +18,5 @@
         Title="Statistics"
         ContentTemplate="{DataTemplate local:StatisticsPage}"
         Route="StatisticsPage" />
-    </FlyoutItem>
+    </FlyoutItem>-->
 </Shell>
