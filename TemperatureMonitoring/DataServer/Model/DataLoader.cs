@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Globalization;
-using System.Text.Json;
+﻿using System.Globalization;
 
-namespace TemperatureMonitoring.Model
+namespace DataServer.Model
 {
     public class DataLoader
     {
@@ -23,18 +21,6 @@ namespace TemperatureMonitoring.Model
                     Time = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(timestamp)
                 };
             }
-        }
-
-        public async Task<IEnumerable<TempHum>> DownloadCsv(string url)
-        {
-            var httpClient = new HttpClient();
-            var response = await httpClient.GetAsync(url);
-            response.EnsureSuccessStatusCode();
-
-            var json = await response.Content.ReadAsStringAsync();
-            var tempHumData = JsonSerializer.Deserialize<IEnumerable<TempHum>>(json, new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
-
-            return tempHumData ?? Enumerable.Empty<TempHum>();
         }
     }
 }
