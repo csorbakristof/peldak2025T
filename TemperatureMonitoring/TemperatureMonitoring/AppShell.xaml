@@ -13,13 +13,10 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
     </FlyoutItem>
-
-    <FlyoutItem Title="Statistics" Icon="stats.png">
+    <FlyoutItem Title="Statistics" Icon="statistics.png">
         <ShellContent
         Title="Statistics"
         ContentTemplate="{DataTemplate local:StatisticsPage}"
         Route="StatisticsPage" />
     </FlyoutItem>
-    
-
 </Shell>
