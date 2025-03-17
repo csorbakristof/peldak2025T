@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureMonitoring", "TemperatureMonitoring\TemperatureMonitoring.csproj", "{AB14925A-0F10-4132-A966-7A80B28EB69D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataServer", "DataServer\DataServer.csproj", "{B0AC6F85-807D-4D55-B9D5-89D45689E9D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{AB14925A-0F10-4132-A966-7A80B28EB69D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB14925A-0F10-4132-A966-7A80B28EB69D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{AB14925A-0F10-4132-A966-7A80B28EB69D}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{B0AC6F85-807D-4D55-B9D5-89D45689E9D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B0AC6F85-807D-4D55-B9D5-89D45689E9D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B0AC6F85-807D-4D55-B9D5-89D45689E9D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B0AC6F85-807D-4D55-B9D5-89D45689E9D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
