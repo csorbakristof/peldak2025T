@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using System.Text.Json;
 
 namespace TemperatureMonitoring.Model
 {
@@ -21,6 +22,18 @@ namespace TemperatureMonitoring.Model
                     Time = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(timestamp)
                 };
             }
+        }
+
+        public async Task<IEnumerable<TempHum>> DownloadCsv(string url)
+        {
+            var httpClient = new HttpClient();
+            var csv = await httpClient.GetAsync(url);
+            csv.EnsureSuccessStatusCode();
+            var json = await csv.Content.ReadAsStringAsync();
+            var tempHumData = JsonSerializer.Deserialize<IEnumerable<TempHum>>(json,
+                new JsonSerializerOptions() { PropertyNameCaseInsensitive=true });
+
+            return tempHumData ?? Enumerable.Empty<TempHum>();
         }
     }
 }
