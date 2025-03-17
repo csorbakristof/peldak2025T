@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
+using OxyPlot.Maui.Skia;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 
 namespace TemperatureMonitoring
 {
@@ -9,6 +11,8 @@ namespace TemperatureMonitoring
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                .UseSkiaSharp()
+                .UseOxyPlotSkia()
                 .ConfigureFonts(fonts =>
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
