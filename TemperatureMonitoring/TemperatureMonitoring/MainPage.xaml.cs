@@ -5,23 +5,23 @@ namespace TemperatureMonitoring
 {
     public partial class MainPage : ContentPage
     {
-        public ObservableCollection<TempHum> TempHumList { get; set; }
-            = new ObservableCollection<TempHum>();
+        private TemperatureMonitoring.ViewModel.TempHumViewModel viewModel;
 
-        public MainPage()
+        public MainPage(ViewModel.TempHumViewModel viewModel)
         {
             InitializeComponent();
-            this.BindingContext = this;
+            this.BindingContext = viewModel;
+            this.viewModel = viewModel;
         }
 
         private void LoadCsv_Clicked(object sender, EventArgs e)
         {
             var loader = new DataLoader();
-            TempHumList.Clear();
+            viewModel.TempHumList.Clear();
             var appDirectory = System.AppContext.BaseDirectory;
             foreach (var item in loader.LoadCsv(Path.Combine(appDirectory,@"Data/data.csv")).Take(200))
             {
-                TempHumList.Add(item);
+                viewModel.TempHumList.Add(item);
             }
         }
     }
