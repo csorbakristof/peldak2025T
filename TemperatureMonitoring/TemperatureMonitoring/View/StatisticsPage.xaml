@@ -14,7 +14,9 @@
             <ColumnDefinition Width="250" />
         </Grid.ColumnDefinitions>
         <Image Source="thermometer.png" Grid.Row="0" Grid.Column="1" />
-        <oxy:PlotView BackgroundColor="LightGray" x:Name="PlotView"
+        <oxy:PlotView BackgroundColor="LightGray" x:Name="PlotViewTH200"
+                      Grid.Row="0" Grid.Column="0" />
+        <oxy:PlotView BackgroundColor="LightGray" x:Name="PlotViewDailyDiff"
                       Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2"/>
     </Grid>
 </ContentPage>
