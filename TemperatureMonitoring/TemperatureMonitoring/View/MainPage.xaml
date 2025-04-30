@@ -7,7 +7,7 @@
     <VerticalStackLayout Padding="30,0" Spacing="25">
         <Button Text="Load CSV" Clicked="LoadCsv_Clicked" HorizontalOptions="Fill" />
         <Button Text="Download CSV" Clicked="DownloadCsv_Clicked" HorizontalOptions="Fill" />
-        <CollectionView ItemsSource="{x:Binding TempHumList}" VerticalScrollBarVisibility="Always" HeightRequest="200">
+        <CollectionView ItemsSource="{x:Binding TempHum200List}" VerticalScrollBarVisibility="Always" HeightRequest="200">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:TempHum">
                     <HorizontalStackLayout Spacing="10">

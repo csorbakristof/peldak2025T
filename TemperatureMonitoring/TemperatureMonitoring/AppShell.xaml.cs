@@ -8,7 +8,7 @@ namespace TemperatureMonitoring
         {
             InitializeComponent();
 
-            var vm = new ViewModel.TempHumViewModel();
+            var vm = new ViewModel.TempHumViewModel(new Model.RawTempHumContainer());
             var mainPage = new MainPage(vm);
             var statisticsPage = new StatisticsPage(vm);
 

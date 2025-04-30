@@ -1,5 +1,4 @@
-﻿using System.Collections.ObjectModel;
-using TemperatureMonitoring.Model;
+﻿using TemperatureMonitoring.Model;
 
 namespace TemperatureMonitoring.View
 {
@@ -17,23 +16,19 @@ namespace TemperatureMonitoring.View
         private void LoadCsv_Clicked(object sender, EventArgs e)
         {
             var loader = new DataLoader();
-            viewModel.TempHumList.Clear();
+            viewModel.TempHum200List.Clear();
             var appDirectory = System.AppContext.BaseDirectory;
-            foreach (var item in loader.LoadCsv(Path.Combine(appDirectory,@"Data/data.csv")).Take(200))
-            {
-                viewModel.TempHumList.Add(item);
-            }
+            var loadedTempHums = loader.LoadCsv(Path.Combine(appDirectory, @"Data/data.csv"));
+            viewModel.AddToModel(loadedTempHums);
+
         }
 
         private async void DownloadCsv_Clicked(object sender, EventArgs e)
         {
             var loader = new DataLoader();
-            viewModel.TempHumList.Clear();
-            var downloadedTempHums = await loader.DownloadCsv(@"http://localhost:5208/data");
-            foreach (var item in downloadedTempHums.Take(200))
-            {
-                viewModel.TempHumList.Add(item);
-            }
+            viewModel.TempHum200List.Clear();
+            var downloadedTempHums = await loader.DownloadJson(@"http://localhost:5208/data");
+            viewModel.AddToModel(downloadedTempHums);
         }
     }
 }
