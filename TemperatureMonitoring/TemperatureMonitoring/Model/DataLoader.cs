@@ -24,7 +24,7 @@ namespace TemperatureMonitoring.Model
             }
         }
 
-        public async Task<IEnumerable<TempHum>> DownloadCsv(string url)
+        public async Task<IEnumerable<TempHum>> DownloadJson(string url)
         {
             var httpClient = new HttpClient();
             var csv = await httpClient.GetAsync(url);

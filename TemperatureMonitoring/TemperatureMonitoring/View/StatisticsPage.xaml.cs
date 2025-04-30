@@ -13,12 +13,12 @@ public partial class StatisticsPage : ContentPage
 		InitializeComponent();
         this.BindingContext = vm;
 		this.viewModel = vm;
-        vm.TempHumList.CollectionChanged += TempHumList_CollectionChanged;
+        vm.TempHum200List.CollectionChanged += TempHum200List_CollectionChanged;
     }
 
-    private void TempHumList_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    private void TempHum200List_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
-        var dataPoints = this.viewModel.TempHumList.Select((tempHum,index) => new DataPoint(index, tempHum.Temperature)).ToList();
+        var dataPoints = this.viewModel.TempHum200List.Select((tempHum,index) => new DataPoint(index, tempHum.Temperature)).ToList();
         var model = new PlotModel { Title = "Temperature" };
         model.Series.Add(new LineSeries {
             ItemsSource = dataPoints,
