@@ -14,21 +14,12 @@ namespace TemperatureMonitoring.View
             this.viewModel = viewModel;
         }
 
-        private void LoadCsv_Clicked(object sender, EventArgs e)
+        private void LoadMergedJson_Clicked(object sender, EventArgs e)
         {
             var loader = new DataLoader();
-            viewModel.TempHum200List.Clear();
             var appDirectory = System.AppContext.BaseDirectory;
-            var tempHums = loader.LoadCsv(Path.Combine(appDirectory, @"Data/data.csv"));
+            var tempHums = loader.LoadMergedJson(Path.Combine(appDirectory, @"Data/allTempLog.json"));
             viewModel.AddToModel(tempHums);
-        }
-
-        private async void DownloadCsv_Clicked(object sender, EventArgs e)
-        {
-            var loader = new DataLoader();
-            viewModel.TempHum200List.Clear();
-            var downloadedTempHums = await loader.DownloadJson(@"http://localhost:5208/data");
-            viewModel.AddToModel(downloadedTempHums);
         }
     }
 }

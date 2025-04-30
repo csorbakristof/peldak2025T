@@ -5,14 +5,15 @@
              x:Class="TemperatureMonitoring.View.MainPage">
 
     <VerticalStackLayout Padding="30,0" Spacing="25">
-        <Button Text="Load CSV" Clicked="LoadCsv_Clicked" HorizontalOptions="Fill" />
-        <Button Text="Download CSV" Clicked="DownloadCsv_Clicked" HorizontalOptions="Fill" />
+        <Button Text="Load" Clicked="LoadMergedJson_Clicked" HorizontalOptions="Fill" />
         <CollectionView ItemsSource="{x:Binding TempHum200List}" VerticalScrollBarVisibility="Always" HeightRequest="200">
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:TempHum">
                     <HorizontalStackLayout Spacing="10">
                         <Label Text="Time:" />
                         <Label Text="{x:Binding Time}" />
+                        <Label Text="Dev:" />
+                        <Label Text="{x:Binding DeviceName}" />
                         <Label Text="T:" />
                         <Label Text="{x:Binding Temperature}" />
                         <Label Text="RH:" />
