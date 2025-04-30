@@ -13,22 +13,29 @@ namespace TemperatureMonitoring.View
             this.viewModel = viewModel;
         }
 
-        private void LoadCsv_Clicked(object sender, EventArgs e)
+        private void LoadMergedJson_Clicked(object sender, EventArgs e)
         {
             var loader = new DataLoader();
-            viewModel.TempHum200List.Clear();
             var appDirectory = System.AppContext.BaseDirectory;
-            var loadedTempHums = loader.LoadCsv(Path.Combine(appDirectory, @"Data/data.csv"));
+            var loadedTempHums = loader.LoadMergedJson(Path.Combine(appDirectory, @"Data/allTempLog.json"));
             viewModel.AddToModel(loadedTempHums);
-
         }
 
-        private async void DownloadCsv_Clicked(object sender, EventArgs e)
-        {
-            var loader = new DataLoader();
-            viewModel.TempHum200List.Clear();
-            var downloadedTempHums = await loader.DownloadJson(@"http://localhost:5208/data");
-            viewModel.AddToModel(downloadedTempHums);
-        }
+        //private void LoadCsv_Clicked(object sender, EventArgs e)
+        //{
+        //    var loader = new DataLoader();
+        //    viewModel.TempHum200List.Clear();
+        //    var appDirectory = System.AppContext.BaseDirectory;
+        //    var loadedTempHums = loader.LoadCsv(Path.Combine(appDirectory, @"Data/data.csv"));
+        //    viewModel.AddToModel(loadedTempHums);
+        //}
+
+        //private async void DownloadCsv_Clicked(object sender, EventArgs e)
+        //{
+        //    var loader = new DataLoader();
+        //    viewModel.TempHum200List.Clear();
+        //    var downloadedTempHums = await loader.DownloadJson(@"http://localhost:5208/data");
+        //    viewModel.AddToModel(downloadedTempHums);
+        //}
     }
 }

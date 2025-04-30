@@ -35,5 +35,13 @@ namespace TemperatureMonitoring.Model
 
             return tempHumData ?? Enumerable.Empty<TempHum>();
         }
+
+        public IEnumerable<TempHum> LoadMergedJson(string filename)
+        {
+            var json = System.IO.File.ReadAllText(filename);
+            var tempHumData = JsonSerializer.Deserialize<IEnumerable<TempHum>>(json,
+                new JsonSerializerOptions() { PropertyNameCaseInsensitive = true });
+            return tempHumData ?? Enumerable.Empty<TempHum>();
+        }
     }
 }

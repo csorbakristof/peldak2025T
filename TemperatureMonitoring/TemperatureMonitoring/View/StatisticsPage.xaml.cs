@@ -1,5 +1,7 @@
 using OxyPlot;
+using OxyPlot.Axes;
 using OxyPlot.Series;
+using System.Collections.Specialized;
 using TemperatureMonitoring.ViewModel;
 
 namespace TemperatureMonitoring.View;
@@ -14,6 +16,33 @@ public partial class StatisticsPage : ContentPage
         this.BindingContext = vm;
 		this.viewModel = vm;
         vm.TempHum200List.CollectionChanged += TempHum200List_CollectionChanged;
+        vm.DailyMeanExternalInternalDifference.CollectionChanged += DailyMeanExternalInternalDifference_CollectionChanged;
+    }
+
+    private void DailyMeanExternalInternalDifference_CollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+    {
+        var dataPoints = this.viewModel.DailyMeanExternalInternalDifference.Select(diff => new DataPoint(
+                DateTimeAxis.ToDouble(diff.Day.ToDateTime(new TimeOnly())),
+                diff.Value)).ToList();
+        var model = new PlotModel { Title = "Daily temperature diff" };
+
+        model.Axes.Add(new DateTimeAxis()
+        {
+            Position = AxisPosition.Bottom,
+            MajorGridlineStyle = LineStyle.Solid,
+            StringFormat = "MMM:dd",
+            MajorStep = 30,    // days
+            IsZoomEnabled = true
+        });
+
+        model.Series.Add(new LineSeries
+        {
+            ItemsSource = dataPoints,
+            Color = OxyColors.Blue,
+            MarkerType = MarkerType.Circle,
+        });
+        PlotViewDailyDiff.Model = model;
+        model.InvalidatePlot(true);
     }
 
     private void TempHum200List_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
@@ -25,7 +54,7 @@ public partial class StatisticsPage : ContentPage
             Color = OxyColors.Blue,
             MarkerType = MarkerType.Circle,
         });
-        PlotView.Model = model;
+        PlotViewTH200.Model = model;
         model.InvalidatePlot(true);
     }
 }
